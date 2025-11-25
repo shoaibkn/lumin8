@@ -1,12 +1,21 @@
 "use client";
 
-import { Facebook, Github, Instagram, Mail, MapPin } from "lucide-react";
+import {
+  Facebook,
+  Github,
+  Instagram,
+  LetterText,
+  Mail,
+  MapPin,
+  Phone,
+} from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
 import { useState, type FormEvent } from "react";
 import { MagneticButton } from "@/components/magnetic-button";
 import { submitContactForm } from "@/app/actions/contact";
 import Link from "next/link";
 import { Button } from "../ui/button";
+import PhoneCallbackDialog from "../phone-callback-dialog";
 
 export function ContactSection() {
   const { ref, isVisible } = useReveal(0.3);
@@ -17,6 +26,7 @@ export function ContactSection() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   async function handleSubmit() {
     setIsSubmitting(true);
@@ -128,7 +138,11 @@ export function ContactSection() {
                     <Instagram />
                   </Button>
                 </Link>
-                <Link href={"https://www.facebook.com/shoaib.khan.9609"}>
+                <Link
+                  href={
+                    "https://www.facebook.com/people/Lumin8-Studios/61584179761617"
+                  }
+                >
                   <Button
                     size={"icon"}
                     variant={"ghost"}
@@ -239,14 +253,34 @@ export function ContactSection() {
                 }`}
                 style={{ transitionDelay: "650ms" }}
               >
-                <MagneticButton
-                  variant="primary"
-                  size="lg"
-                  className="w-full disabled:opacity-50"
-                  onClick={isSubmitting ? undefined : undefined}
-                >
-                  {isSubmitting ? "Sending..." : "Send Message"}
-                </MagneticButton>
+                <div className="flex flex-col gap-2 font-sans">
+                  <MagneticButton
+                    variant="primary"
+                    size="lg"
+                    className="disabled:opacity-50 w-full"
+                    onClick={isSubmitting ? undefined : undefined}
+                  >
+                    <span className="flex flex-row gap-4 w-full justify-center">
+                      {isSubmitting ? "Sending..." : "Send Message"}
+                      <Mail />
+                    </span>
+                  </MagneticButton>
+                  <MagneticButton
+                    variant="secondary"
+                    size="default"
+                    className="disabled:opacity-50 w-full"
+                    //@ts-expect-error error
+                    onClick={(ev) => {
+                      ev.preventDefault();
+                      setIsOpen(true);
+                    }}
+                  >
+                    <span className="flex flex-row gap-4 w-full justify-center">
+                      <Phone />
+                      Or Get a call back
+                    </span>
+                  </MagneticButton>
+                </div>
                 {submitSuccess && (
                   <p className="mt-3 text-center font-mono text-sm text-foreground/80">
                     Message sent successfully!
@@ -257,6 +291,7 @@ export function ContactSection() {
           </div>
         </div>
       </div>
+      <PhoneCallbackDialog isOpen={isOpen} onOpenChange={setIsOpen} />
     </section>
   );
 }

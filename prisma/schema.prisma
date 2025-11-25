@@ -1,21 +1,27 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
-    provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-    provider = "postgresql"
-    url      = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model ContactSubmission {
-    id        String   @id @default(cuid())
-    name      String
-    email     String
-    message   String   @db.Text
-    createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  message   String
+  createdAt DateTime @default(now())
 
-    @@map("contact_submissions")
+  @@map("contact_submissions")
+}
+
+model CallRequest {
+  id          String   @id @default(cuid())
+  phoneNumber String
+  name        String
+  createdAt   DateTime @default(now())
+
+  @@map("call_requests")
 }

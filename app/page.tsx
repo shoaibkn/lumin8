@@ -9,6 +9,8 @@ import { AboutSection } from "@/components/sections/about-section";
 import { ContactSection } from "@/components/sections/contact-section";
 import { MagneticButton } from "@/components/magnetic-button";
 import { useRef, useEffect, useState } from "react";
+import PhoneCallbackDialog from "@/components/phone-callback-dialog";
+import { Phone } from "lucide-react";
 
 export default function Home() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -18,6 +20,7 @@ export default function Home() {
   const touchStartX = useRef(0);
   const shaderContainerRef = useRef<HTMLDivElement>(null);
   const scrollThrottleRef = useRef<number | undefined>(undefined);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const checkShaderReady = () => {
@@ -344,7 +347,7 @@ export default function Home() {
                 businesses grow and stand out in their industries.
               </span>
             </p>
-            <div className="flex animate-in fade-in slide-in-from-bottom-4 flex-col gap-4 duration-1000 delay-300 sm:flex-row sm:items-center">
+            <div className="flex font-sans animate-in fade-in slide-in-from-bottom-4 flex-col gap-4 duration-1000 delay-300 sm:flex-row sm:items-center">
               <MagneticButton
                 size="lg"
                 variant="primary"
@@ -353,13 +356,17 @@ export default function Home() {
                 Get in Touch
               </MagneticButton>
               <MagneticButton
-                size="lg"
                 variant="secondary"
-                onClick={() => window.open("https://me.lumin8.in", "_blank")}
+                size="lg"
+                className="disabled:opacity-50"
+                onClick={() => setIsOpen(true)}
               >
-                Hire Me
+                <span className="flex flex-row gap-4 w-full justify-center">
+                  Or Get a call back
+                </span>
               </MagneticButton>
             </div>
+            <PhoneCallbackDialog isOpen={isOpen} onOpenChange={setIsOpen} />
           </div>
 
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-in fade-in duration-1000 delay-500">
