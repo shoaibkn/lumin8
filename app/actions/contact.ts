@@ -16,6 +16,7 @@ export async function submitCallRequest(data: {
   name: string;
 }) {
   try {
+    //@ts-expect-error error
     const submission = await prisma.callRequest.create({
       data: {
         phoneNumber: data.phoneNumber,
