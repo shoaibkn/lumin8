@@ -69,44 +69,46 @@ export function ContactSection() {
               </p>
             </div>
 
-            <div className="space-y-4 md:space-y-8">
-              <a
-                href="mailto:hello@lumin8.in"
-                className={`group block transition-all duration-700 ${
-                  isVisible
-                    ? "translate-x-0 opacity-100"
-                    : "-translate-x-16 opacity-0"
-                }`}
-                style={{ transitionDelay: "200ms" }}
-              >
-                <div className="mb-1 flex items-center gap-2">
-                  <Mail className="h-3 w-3 text-foreground/60" />
-                  <span className="font-mono text-xs text-foreground/60">
-                    Email
-                  </span>
-                </div>
-                <p className="text-base text-foreground transition-colors group-hover:text-foreground/70 md:text-2xl">
-                  hello@lumin8.in
-                </p>
-              </a>
+            <div className="space-y-4 md:space-y-8 flex flex-row lg:flex-col justify-between items-center">
+              <div className="flex flex-col gap-2 w-full">
+                <Link
+                  href="mailto:hello@lumin8.in"
+                  className={`group block transition-all duration-700 ${
+                    isVisible
+                      ? "translate-x-0 opacity-100"
+                      : "-translate-x-16 opacity-0"
+                  }`}
+                  style={{ transitionDelay: "200ms" }}
+                >
+                  <div className="mb-1 flex items-center gap-2">
+                    <Mail className="h-3 w-3 text-foreground/60" />
+                    <span className="font-mono text-xs text-foreground/60">
+                      Email
+                    </span>
+                  </div>
+                  <p className="text-base text-foreground transition-colors group-hover:text-foreground/70 md:text-2xl">
+                    hello@lumin8.in
+                  </p>
+                </Link>
 
-              <div
-                className={`transition-all duration-700 ${
-                  isVisible
-                    ? "translate-y-0 opacity-100"
-                    : "translate-y-12 opacity-0"
-                }`}
-                style={{ transitionDelay: "350ms" }}
-              >
-                <div className="mb-1 flex items-center gap-2">
-                  <MapPin className="h-3 w-3 text-foreground/60" />
-                  <span className="font-mono text-xs text-foreground/60">
-                    Location
-                  </span>
+                <div
+                  className={`transition-all duration-700 ${
+                    isVisible
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-12 opacity-0"
+                  }`}
+                  style={{ transitionDelay: "350ms" }}
+                >
+                  <div className="mb-1 flex items-center gap-2">
+                    <MapPin className="h-3 w-3 text-foreground/60" />
+                    <span className="font-mono text-xs text-foreground/60">
+                      Location
+                    </span>
+                  </div>
+                  <p className="text-base text-foreground md:text-2xl">
+                    Agra, IN
+                  </p>
                 </div>
-                <p className="text-base text-foreground md:text-2xl">
-                  Agra, IN
-                </p>
               </div>
 
               <div
@@ -117,26 +119,6 @@ export function ContactSection() {
                 }`}
                 style={{ transitionDelay: "500ms" }}
               >
-                {/*{["Twitter", "Instagram", "LinkedIn", "Dribbble"].map(
-                  (social, i) => (
-                    <Link
-                      key={social}
-                      href="#"
-                      className="border-b border-transparent font-mono text-xs text-foreground/60 transition-all hover:border-foreground/60 hover:text-foreground/90"
-                    >
-                      {social}
-                    </Link>
-                  ),
-                )}*/}
-                {/*<Link href={"https://www.twitter.com/shoaibkn"}>
-                  <Button
-                    size={"icon"}
-                    variant={"ghost"}
-                    className="bg-transparent border-accent-foreground rounded-full"
-                  >
-                    <Twitter />
-                  </Button>
-                </Link>*/}
                 <Link href={"https://www.instagram.com/lumin8in"}>
                   <Button
                     size={"icon"}

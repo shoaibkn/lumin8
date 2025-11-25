@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 
 import {
   PreviewCard as PreviewCardPrimitive,
@@ -12,8 +12,8 @@ import {
   type PreviewCardPositionerProps as PreviewCardPositionerPrimitiveProps,
   type PreviewCardPopupProps as PreviewCardPopupPrimitiveProps,
   type PreviewCardBackdropProps as PreviewCardBackdropPrimitiveProps,
-} from '@/components/animate-ui/primitives/base/preview-card';
-import { cn } from '@/lib/utils';
+} from "@/components/animate-ui/primitives/base/preview-card";
+import { cn } from "@/lib/utils";
 
 type PreviewCardProps = PreviewCardPrimitiveProps;
 
@@ -32,7 +32,7 @@ type PreviewCardPanelProps = PreviewCardPositionerPrimitiveProps &
 
 function PreviewCardPanel({
   className,
-  align = 'center',
+  align = "center",
   sideOffset = 4,
   style,
   children,
@@ -48,7 +48,7 @@ function PreviewCardPanel({
       >
         <PreviewCardPopupPrimitive
           className={cn(
-            'bg-popover text-popover-foreground w-64 origin-(--transform-origin) rounded-md border p-4 shadow-md outline-hidden',
+            "bg-popover text-popover-foreground w-64 origin-(--transform-origin) rounded-md border p-4 shadow-md outline-hidden",
             className,
           )}
           style={style}
