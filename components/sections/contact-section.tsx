@@ -1,16 +1,8 @@
 "use client";
 
-import {
-  Facebook,
-  Github,
-  Instagram,
-  LetterText,
-  Mail,
-  MapPin,
-  Phone,
-} from "lucide-react";
+import { Facebook, Github, Instagram, Mail, MapPin, Phone } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
-import { useState, type FormEvent } from "react";
+import { useState } from "react";
 import { MagneticButton } from "@/components/magnetic-button";
 import { submitContactForm } from "@/app/actions/contact";
 import Link from "next/link";
@@ -60,7 +52,7 @@ export function ContactSection() {
       className="flex h-screen w-screen shrink-0 snap-start items-center px-4 pt-20 md:px-12 md:pt-0 lg:px-16"
     >
       <div className="mx-auto w-full max-w-7xl">
-        <div className="grid gap-8 md:grid-cols-[1.2fr_1fr] md:gap-16 lg:gap-24">
+        <div className="grid gap-2 md:grid-cols-[1.2fr_1fr] md:gap-16 lg:gap-24">
           <div className="flex flex-col justify-center">
             <div
               className={`mb-6 transition-all duration-700 md:mb-12 ${
@@ -74,7 +66,7 @@ export function ContactSection() {
                 <br />
                 talk
               </h2>
-              <p className="font-mono text-xs text-foreground/60 md:text-base">
+              <p className="font-sans text-xs text-foreground/60 md:text-base">
                 / Get in touch
               </p>
             </div>
@@ -169,7 +161,7 @@ export function ContactSection() {
             <form
               id="contact-form"
               action={handleSubmit}
-              className="space-y-4 md:space-y-6"
+              className="space-y-2 md:space-y-6"
             >
               <div
                 className={`transition-all duration-700 ${
@@ -179,7 +171,7 @@ export function ContactSection() {
                 }`}
                 style={{ transitionDelay: "200ms" }}
               >
-                <label className="mb-1 block font-mono text-xs text-foreground/60 md:mb-2">
+                <label className="mb-1 block font-sans text-xs text-foreground/60 md:mb-2">
                   Name
                 </label>
                 <input
@@ -203,7 +195,7 @@ export function ContactSection() {
                 }`}
                 style={{ transitionDelay: "350ms" }}
               >
-                <label className="mb-1 block font-mono text-xs text-foreground/60 md:mb-2">
+                <label className="mb-1 block font-sans text-xs text-foreground/60 md:mb-2">
                   Email
                 </label>
                 <input
@@ -228,7 +220,7 @@ export function ContactSection() {
                 }`}
                 style={{ transitionDelay: "500ms" }}
               >
-                <label className="mb-1 block font-mono text-xs text-foreground/60 md:mb-2">
+                <label className="mb-1 block font-sans text-xs text-foreground/60 md:mb-2">
                   Message
                 </label>
                 <textarea
@@ -256,19 +248,19 @@ export function ContactSection() {
                 <div className="flex flex-col gap-2 font-sans">
                   <MagneticButton
                     variant="primary"
-                    size="lg"
+                    // size="lg"
                     className="disabled:opacity-50 w-full"
                     onClick={isSubmitting ? undefined : undefined}
                   >
-                    <span className="flex flex-row gap-4 w-full justify-center">
+                    <span className="flex font-sans flex-row items-center gap-4 w-full justify-center">
                       {isSubmitting ? "Sending..." : "Send Message"}
-                      <Mail />
+                      <Mail size={18} />
                     </span>
                   </MagneticButton>
                   <MagneticButton
                     variant="secondary"
                     size="default"
-                    className="disabled:opacity-50 w-full"
+                    className="disabled:opacity-50 w-full font-sans"
                     //@ts-expect-error error
                     onClick={(ev) => {
                       ev.preventDefault();
@@ -276,13 +268,13 @@ export function ContactSection() {
                     }}
                   >
                     <span className="flex flex-row gap-4 w-full justify-center">
-                      <Phone />
+                      <Phone size={18} />
                       Or Get a call back
                     </span>
                   </MagneticButton>
                 </div>
                 {submitSuccess && (
-                  <p className="mt-3 text-center font-mono text-sm text-foreground/80">
+                  <p className="mt-3 text-center font-sans text-sm text-foreground/80">
                     Message sent successfully!
                   </p>
                 )}

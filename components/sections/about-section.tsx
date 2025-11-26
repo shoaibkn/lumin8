@@ -13,7 +13,7 @@ export function AboutSection({
   return (
     <section
       ref={ref}
-      className="flex h-screen w-screen shrink-0 snap-start items-center px-4 pt-20 md:px-12 md:pt-0 lg:px-16"
+      className="flex h-screen w-screen shrink-0 snap-start items-center px-4 pt-12 md:px-12 md:pt-0 lg:px-16"
     >
       <div className="mx-auto w-full max-w-7xl">
         <div className="grid gap-8 md:grid-cols-2 md:gap-16 lg:gap-24">
@@ -43,7 +43,7 @@ export function AboutSection({
               }`}
               style={{ transitionDelay: "200ms" }}
             >
-              <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-lg">
+              <p className="font-sans max-w-md text-sm leading-relaxed text-foreground/90 md:text-lg">
                 We're a collective of designers, developers, and creative
                 technologists obsessed with crafting exceptional digital
                 experiences.
@@ -114,20 +114,20 @@ export function AboutSection({
         </div>
 
         <div
-          className={`mt-8 flex flex-wrap gap-3 transition-all duration-700 md:mt-16 md:gap-4 ${
+          className={`font-sans mt-8 flex flex-wrap gap-4 justify-center transition-all duration-700 md:mt-16 md:gap-4 ${
             isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
           }`}
           style={{ transitionDelay: "750ms" }}
         >
           <MagneticButton
-            size="lg"
+            // size="lg"
             variant="primary"
             onClick={() => scrollToSection?.(4)}
           >
             Start a Project
           </MagneticButton>
           <MagneticButton
-            size="lg"
+            // size="lg"
             variant="secondary"
             onClick={() => scrollToSection?.(1)}
           >

@@ -8,24 +8,7 @@ import {
   PreviewLinkCardImage,
 } from "@/components/animate-ui/components/base/preview-link-card";
 import { MagneticButton } from "../magnetic-button";
-import { Github, GithubIcon, PersonStanding, User } from "lucide-react";
-
-interface BasePreviewLinkCardDemoProps {
-  side?: "top" | "bottom" | "left" | "right";
-  sideOffset?: number;
-  align?: "start" | "center" | "end";
-  alignOffset?: number;
-  followCursor?: boolean | "x" | "y";
-  href: string;
-}
-
-interface BasePreviewCardDemoProps {
-  side?: "top" | "bottom" | "left" | "right";
-  sideOffset?: number;
-  align?: "start" | "center" | "end";
-  alignOffset?: number;
-  followCursor?: boolean | "x" | "y";
-}
+import { Github, User } from "lucide-react";
 
 export function WorkSection() {
   const { ref, isVisible } = useReveal(0.3);
@@ -33,11 +16,11 @@ export function WorkSection() {
   return (
     <section
       ref={ref}
-      className="flex h-screen w-screen shrink-0 snap-start items-center px-6 pt-20 md:px-12 md:pt-0 lg:px-16"
+      className="flex h-screen w-screen shrink-0 snap-start items-center px-4 pt-12 md:px-12 md:pt-0 lg:px-16"
     >
       <div className="mx-auto w-full max-w-7xl">
         <div
-          className={`mb-8 transition-all duration-700 md:mb-16 ${
+          className={`mb-4 transition-all duration-700 md:mb-16 ${
             isVisible
               ? "translate-x-0 opacity-100"
               : "-translate-x-12 opacity-0"
@@ -46,12 +29,12 @@ export function WorkSection() {
           <h2 className="mb-2 font-sans text-5xl font-light tracking-tight text-foreground md:text-6xl lg:text-7xl">
             Featured
           </h2>
-          <p className="font-mono text-sm text-foreground/60 md:text-base">
+          <p className="font-sans text-sm text-foreground/60 md:text-base">
             / Recent projects
           </p>
         </div>
 
-        <div className="space-y-6 md:space-y-8">
+        <div className="space-y-4 md:space-y-8">
           {[
             {
               number: "01",
@@ -88,17 +71,17 @@ export function WorkSection() {
             />
           ))}
         </div>
-        <span className="w-full gap-4 flex justify-end mt-8">
-          <MagneticButton>
-            <span className="flex flex-row items-center gap-4">
-              <Github />
-              More Projects
+        <span className="w-full gap-4 flex md:justify-end justify-center mt-8 font-sans">
+          <MagneticButton size="default">
+            <span className="flex flex-row items-center gap-2">
+              <Github size={18} />
+              Projects
             </span>
           </MagneticButton>
           <MagneticButton variant="secondary">
-            <span className="flex flex-row items-center gap-4">
-              <User />
-              Personal Portfolio
+            <span className="flex flex-row items-center gap-2">
+              <User size={18} />
+              Portfolio
             </span>
           </MagneticButton>
         </span>

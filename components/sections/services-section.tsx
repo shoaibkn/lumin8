@@ -9,21 +9,13 @@ import {
 import Image from "next/image";
 import { Check } from "lucide-react";
 
-interface BasePreviewCardDemoProps {
-  side?: "top" | "bottom" | "left" | "right";
-  sideOffset?: number;
-  align?: "start" | "center" | "end";
-  alignOffset?: number;
-  followCursor?: boolean | "x" | "y";
-}
-
 export function ServicesSection() {
   const { ref, isVisible } = useReveal(0.3);
 
   return (
     <section
       ref={ref}
-      className="flex h-screen w-screen shrink-0 snap-start items-center px-6 pt-20 md:px-12 md:pt-0 lg:px-16"
+      className="flex h-screen w-screen shrink-0 snap-start items-center px-6 pt-12 md:px-12 md:pt-0 lg:px-16"
     >
       <div className="mx-auto w-full max-w-7xl">
         <div
@@ -36,7 +28,7 @@ export function ServicesSection() {
           <h2 className="mb-2 font-sans text-5xl font-light tracking-tight text-foreground md:text-6xl lg:text-7xl">
             Capabilities
           </h2>
-          <p className="font-mono text-sm text-foreground/60 md:text-base">
+          <p className="font-sans text-sm text-foreground/60 md:text-base">
             / What we bring to the table
           </p>
         </div>
@@ -152,9 +144,9 @@ function ServiceCard({
               transitionDelay: `${index * 150}ms`,
             }}
           >
-            <div className="mb-3 flex items-center gap-3">
+            <div className="mb-0 md:mb-3 flex items-center gap-2">
               <div className="h-px w-8 bg-foreground/30 transition-all duration-300 group-hover:w-12 group-hover:bg-foreground/50" />
-              <span className="font-mono text-xs text-foreground/60">
+              <span className="font-sans text-xs text-foreground/60">
                 0{index + 1}
               </span>
             </div>
@@ -199,7 +191,9 @@ function ServiceCard({
             <h2 className="text-2xl font-bold text-card-foreground mb-2">
               {service.title}
             </h2>
-            <p className="text-sm mb-6 leading-relaxed">{service.description}</p>
+            <p className="text-sm mb-6 leading-relaxed">
+              {service.description}
+            </p>
 
             {/* Features List */}
             <div className="space-y-3">
