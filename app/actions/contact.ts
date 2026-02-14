@@ -1,6 +1,6 @@
 "use server";
 
-import { prisma } from "@/lib/prisma";
+import { convexFunctionNames, getConvexClient } from "@/lib/convex";
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -16,13 +16,13 @@ export async function submitCallRequest(data: {
   name: string;
 }) {
   try {
-    //@ts-expect-error error
-    const submission = await prisma.callRequest.create({
-      data: {
+    await getConvexClient().mutation(
+      convexFunctionNames.submitCallRequest as never,
+      {
         phoneNumber: data.phoneNumber,
         name: data.name,
-      },
-    });
+      } as never,
+    );
     // Send email to admin
     await resend.emails.send({
       from: "Lumin8 <onboarding@lumin8.in>",
@@ -49,14 +49,14 @@ export async function submitCallRequest(data: {
 
 export async function submitContactForm(data: ContactFormData) {
   try {
-    // Save to database
-    const submission = await prisma.contactSubmission.create({
-      data: {
+    await getConvexClient().mutation(
+      convexFunctionNames.submitContactForm as never,
+      {
         name: data.name,
         email: data.email,
         message: data.message,
-      },
-    });
+      } as never,
+    );
 
     // Send email to admin
     await resend.emails.send({
